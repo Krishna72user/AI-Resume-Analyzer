@@ -25,3 +25,5 @@ app.use('/api/otp',otpRoutes)
 app.listen(process.env.PORT||5000,()=>{
     console.log("App is running")
 })
+
+export default app
