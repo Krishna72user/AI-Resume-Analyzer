@@ -55,6 +55,7 @@ PORT=5000
 MONGO_URI=your_mongodb_connection_string
 JWT_SECRET=your_jwt_secret
 OPENAI_API_KEY=your_openai_or_gemini_api_key
+EMAIL=your_email
 ```
 Then start the backend:
 ```bash
