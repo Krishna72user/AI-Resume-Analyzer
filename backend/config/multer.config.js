@@ -2,10 +2,7 @@ import path from 'path'
 import multer from 'multer'
 import fs from 'fs'
 // Ensure /tmp exists
-const tmpDir = './tmp';
-if (!fs.existsSync(tmpDir)) {
-    fs.mkdirSync(tmpDir);
-}
+
 const storage = multer.diskStorage({
     destination:function (req,file,cb){
         cb(null,tmpDir);
