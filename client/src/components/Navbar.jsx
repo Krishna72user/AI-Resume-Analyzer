@@ -61,12 +61,11 @@ export const NavBar = () => {
                         );
 
                         if (res.data.success) {
-                            navigate(location.pathname);
+                            navigate('/analyze');
                         } else {
                             navigate("/login");
                         }
                     } catch (error) {
-                        console.error(error);
                         navigate("/login");
                     }
                 } else {
