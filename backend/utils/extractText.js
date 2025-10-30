@@ -1,10 +1,11 @@
- import { PDFParse } from 'pdf-parse';
+import { extractText } from 'unpdf';
 
 export const extract =async (pdfBuffer)=>{
     try {
-        const data = new PDFParse({data:pdfBuffer})
-        return (await data.getText()).text
+        const { text } = await extractText(buffer);
+        return text;
     } catch (error) {
         throw error
     }
 }
+
