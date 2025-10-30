@@ -27,6 +27,7 @@ export const Analyze = () => {
       setLoading(false)
       toast.success("Successfully analyzed the resume")
     } catch (error) {
+      setLoading(false)
       toast.error("Failed to analyze the resume")
     }
   }

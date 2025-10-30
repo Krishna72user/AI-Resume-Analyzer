@@ -1,14 +1,17 @@
 import { extract } from "../utils/extractText.js"
 import fs from 'fs'
+import path from "path";
 import { GoogleGenAI } from "@google/genai";
 
 // /api/resume/analyze
 export const analyze =async (req,res)=>{
+    const paths = path.resolve(req.file.path);
     try {
-        if(req.file.path){
+        if(paths){
             const {job_desc} = req.body;
-            const buffer = fs.readFileSync(req.file.path)
-            const text = await extract(buffer)
+            const buffer = fs.readFileSync(paths)
+            const uint8Array = new Uint8Array(buffer);
+            const text = await extract(uint8Array)
             const prompt =
             `You are an ATS (Applicant Tracking System) evaluator.
             Compare the resume with the job description and return:
@@ -42,9 +45,11 @@ export const analyze =async (req,res)=>{
         }
         else{
             res.status(404).json({message:"Path not found",success:false})
+
         }
 
     } catch (error) {
+        console.log(error)
         res.status(500).json({message:error.message,success:false})
     }
 }
