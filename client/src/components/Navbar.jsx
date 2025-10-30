@@ -39,7 +39,6 @@ export const NavBar = () => {
                             navigate("/");
                         }
                     } catch (error) {
-                        console.error(error);
                         navigate("/");
                     }
                 } else {
@@ -62,6 +61,7 @@ export const NavBar = () => {
 
                         if (res.data.success) {
                             navigate('/analyze');
+                            setStatus(true);
                         } else {
                             navigate("/login");
                         }
