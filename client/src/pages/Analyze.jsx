@@ -97,9 +97,9 @@ export const Analyze = () => {
             <p className="text-3xl font-bold">{result.keyword_match}%</p>
           </div>
 
-          <div className="bg-white/10 backdrop-blur-lg border border-white/20 rounded-xl p-6">
+          <div className="bg-white/10 backdrop-blur-lg border border-white/20 rounded-xl mb-10 p-6">
             <h2 className="text-lg font-semibold mb-2">Suggestions</h2>
-            <ul className="list-disc pl-5 text-sm text-gray-300">
+            <ul className="list-disc pl-5  text-sm text-gray-300">
               {result.suggestions?.map((s) => (
                 <li key={s.id}>{s}.</li>
               ))}

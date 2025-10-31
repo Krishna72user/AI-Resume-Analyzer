@@ -60,7 +60,7 @@ export const NavBar = () => {
                         );
 
                         if (res.data.success) {
-                            navigate('/analyze');
+                            navigate(location.pathname);
                             setStatus(true);
                         } else {
                             navigate("/login");

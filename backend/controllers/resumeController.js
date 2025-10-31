@@ -24,6 +24,7 @@ export const analyze =async (req,res)=>{
             {ATS Score}|{Keyword match}|{Strengths}|{Missing Skills}|{Improvements}
 
             Give response of Summary ,Strengths, Missing Skills and Improvements in a single string don't use numbering (e.g, 1,2) or Bullets or Stars(**)
+            Note : In response replace "e.g," with "Ex : "
             Job Description:
 
             ${job_desc}
