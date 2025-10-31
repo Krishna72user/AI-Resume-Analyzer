@@ -86,20 +86,20 @@ export const Analyze = () => {
 
       {/* Output Section */}
       {result && (
-        <div className="mt-10 grid md:grid-cols-3 gap-6 w-full max-w-6xl">
-          <div className="bg-white/10 backdrop-blur-lg border border-white/20 rounded-xl p-6">
+        <div className="mt-10 grid md:grid-cols-3 gap-6 w-full mb-10 max-w-6xl">
+          <div className={dark ?"bg-white/10 backdrop-blur-lg border border-white/20 rounded-xl p-6":"bg-gray-200 backdrop-blur-lg border border-white/20 rounded-xl p-6"}>
             <h2 className="text-lg font-semibold mb-2">ATS Score</h2>
             <p className="text-3xl font-bold">{result.ATS}%</p>
           </div>
 
-          <div className="bg-white/10 backdrop-blur-lg border border-white/20 rounded-xl p-6">
+          <div className={dark ?"bg-white/10 backdrop-blur-lg border border-white/20 rounded-xl p-6":"bg-gray-200 backdrop-blur-lg border border-white/20 rounded-xl p-6"}>
             <h2 className="text-lg font-semibold mb-2">Keyword Match</h2>
             <p className="text-3xl font-bold">{result.keyword_match}%</p>
           </div>
 
-          <div className="bg-white/10 backdrop-blur-lg border border-white/20 rounded-xl mb-10 p-6">
+          <div className={dark ?"bg-white/10 backdrop-blur-lg border border-white/20 rounded-xl p-6":"bg-gray-200 backdrop-blur-lg border border-white/20 rounded-xl p-6"}>
             <h2 className="text-lg font-semibold mb-2">Suggestions</h2>
-            <ul className="list-disc pl-5  text-sm text-gray-300">
+            <ul className={dark?"list-disc pl-5  text-sm text-gray-300":"list-disc pl-5  text-sm text-gray-500"}>
               {result.suggestions?.map((s) => (
                 <li key={s.id}>{s}.</li>
               ))}
