@@ -17,6 +17,8 @@ export const NavBar = () => {
 
     const [bar,setBar] = useState(true)
     const {dark,setDark} = useTheme();
+
+    const [loading,setLoading] = useState(true);
     useEffect(() => {
         const verifyAuth = async () => {
             if(location.pathname=='/'){
@@ -35,14 +37,18 @@ export const NavBar = () => {
                         if (res.data.success) {
                             navigate(location.pathname);
                             setStatus(true);
+                            setLoading(false)
                         } else {
                             navigate("/");
+                            setLoading(false)
                         }
                     } catch (error) {
                         navigate("/");
+                        setLoading(false)
                     }
                 } else {
                     navigate("/");
+                    setLoading(false)
                 }
             }
 
@@ -62,18 +68,21 @@ export const NavBar = () => {
                         if (res.data.success) {
                             navigate(location.pathname);
                             setStatus(true);
+                            setLoading(false)
                         } else {
                             navigate("/login");
+                            setLoading(false)
                         }
                     } catch (error) {
                         navigate("/login");
+                        setLoading(false)
                     }
                 } else {
                     navigate("/login");
+                    setLoading(false)
                 }
             }
         };
-
         verifyAuth();
     }, [location.pathname]);
 
@@ -111,9 +120,9 @@ export const NavBar = () => {
                         setDark((e)=>!e)
                     }}
                     color="yellow" className='text-3xl hover:cursor-pointer p-1' />}
-                    {status && <button onClick={handleSign} className="text-black  text-sm font-bold hover:cursor-pointer py-1 rounded-md bg-white px-2">SIGN OUT</button>}
-                    {!status && <NavLink to='/login' className=" hover:cursor-pointer text-sm font-bold py-1 rounded-md bg-white text-black px-2">LOG IN</NavLink>}
-                    {!status && <NavLink to='/register' className="text-white hover:cursor-pointer text-sm font-bold py-1 rounded-md  px-2">SIGN IN</NavLink>}
+                    {status && !loading && <button onClick={handleSign} className="text-black  text-sm font-bold hover:cursor-pointer py-1 rounded-md bg-white px-2">SIGN OUT</button>}
+                    {!status && !loading && <NavLink to='/login' className=" hover:cursor-pointer text-sm font-bold py-1 rounded-md bg-white text-black px-2">LOG IN</NavLink>}
+                    {!status && !loading && <NavLink to='/register' className="text-white hover:cursor-pointer text-sm font-bold py-1 rounded-md  px-2">SIGN IN</NavLink>}
 
                 </div>
 
@@ -159,9 +168,9 @@ export const NavBar = () => {
                     </NavLink>
                     <div className="mt-2">
 
-                    {status && <button onClick={handleSign}  className="text-black  text-sm font-bold hover:cursor-pointer py-1 rounded-md bg-white px-2">SIGN OUT</button>}
-                    {!status && <NavLink to='/login'onClick={()=>{setNav(n=>!n)}} className=" hover:cursor-pointer text-sm font-bold py-1  rounded-md bg-white text-black px-2">LOG IN</NavLink>}
-                    {!status && <NavLink to='/register'onClick={()=>{setNav(n=>!n)}} className="text-white hover:cursor-pointer text-sm font-bold py-1 rounded-md  px-2">SIGN IN</NavLink>}
+                    {status && !loading && <button onClick={handleSign}  className="text-black  text-sm font-bold hover:cursor-pointer py-1 rounded-md bg-white px-2">SIGN OUT</button>}
+                    {!status && !loading && <NavLink to='/login'onClick={()=>{setNav(n=>!n)}} className=" hover:cursor-pointer text-sm font-bold py-1  rounded-md bg-white text-black px-2">LOG IN</NavLink>}
+                    {!status && !loading && <NavLink to='/register'onClick={()=>{setNav(n=>!n)}} className="text-white hover:cursor-pointer text-sm font-bold py-1 rounded-md  px-2">SIGN IN</NavLink>}
                     </div>
                 </motion.div>
             </div>
