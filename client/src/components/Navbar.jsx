@@ -21,6 +21,7 @@ export const NavBar = () => {
     const [loading,setLoading] = useState(true);
     useEffect(() => {
         const verifyAuth = async () => {
+            setLoading(true)
             if(location.pathname=='/'){
                 const token = localStorage.getItem("authtoken"); // fix key name too
                 if (token) {
@@ -33,22 +34,17 @@ export const NavBar = () => {
                                 },
                             }
                         );
-
                         if (res.data.success) {
                             navigate(location.pathname);
                             setStatus(true);
-                            setLoading(false)
                         } else {
                             navigate("/");
-                            setLoading(false)
                         }
                     } catch (error) {
                         navigate("/");
-                        setLoading(false)
                     }
                 } else {
                     navigate("/");
-                    setLoading(false)
                 }
             }
 
@@ -68,20 +64,17 @@ export const NavBar = () => {
                         if (res.data.success) {
                             navigate(location.pathname);
                             setStatus(true);
-                            setLoading(false)
                         } else {
                             navigate("/login");
-                            setLoading(false)
                         }
                     } catch (error) {
                         navigate("/login");
-                        setLoading(false)
                     }
                 } else {
                     navigate("/login");
-                    setLoading(false)
                 }
             }
+            setLoading(false)
         };
         verifyAuth();
     }, [location.pathname]);
